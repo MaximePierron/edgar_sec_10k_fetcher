@@ -22,7 +22,7 @@ Find a ticker from (part of) a company name:
 uv run find_ticker --name "apple"
 ```
 
-Fetch the latest 10-K of each ticker as `<TICKER>.pdf` (in the current directory, or in `--dest`):
+Fetch the latest 10-K of each ticker as `<ticker_10k_filing_date>.pdf` (in the current directory, or in `--dest`):
 
 ```bash
 uv run fetch_10k_report_from --tickers AAPL,META,GOOGL,AMZN,NFLX,GS --dest reports
