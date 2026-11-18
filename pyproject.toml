@@ -1,0 +1,44 @@
+[project]
+name = "edgar-10k"
+version = "0.1.0"
+description = "Fetch the latest 10-K of companies from SEC EDGAR and save them as PDF"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["playwright", "requests"]
+
+[project.scripts]
+find_ticker = "edgar_10k.cli:find_ticker"
+fetch_10k_report_from = "edgar_10k.cli:fetch_10k_report_from"
+
+[dependency-groups]
+dev = [
+    "mypy",
+    "pytest",
+    "responses",
+    "ruff",
+    "types-requests",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.mypy]
+strict = true
+
+[[tool.mypy.overrides]]
+module = [
+    "responses.*",
+    "pytest.*",
+    "playwright.sync_api.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
